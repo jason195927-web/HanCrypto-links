@@ -7,223 +7,287 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
-            --text-color: #e6edf3;
-            --accent-color: #3fb950; /* 交易獲利的綠色意象 */
-            --gray-text: #8b949e;
-            --border-color: #30363d;
+            --accent-gold: #d4af37;
+            --kline-up: #00c076;    /* 交易所標準綠 */
+            --kline-down: #ff3b30;  /* 交易所標準紅 */
+            --bg-deep: #0b0e11;     /* 幣安/Bitget 標配深色背景 */
+            --card-bg: rgba(23, 29, 37, 0.9);
+            --border-color: rgba(212, 175, 55, 0.3);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        /* 背景動畫：模擬 K 線走勢流動 */
+        @keyframes marketFlow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 1000px 0%; }
         }
+
+        /* 全局字體與平滑動畫 */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "PingFang TC", "Inter", sans-serif; }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-deep);
+            /* 繪製專業交易網格與模擬 K 線紋理 */
+            background-image: 
+                linear-gradient(rgba(0, 192, 118, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 59, 48, 0.05) 1px, transparent 1px),
+                linear-gradient(rgba(212, 175, 55, 0.02) 2px, transparent 2px);
+            background-size: 50px 50px, 50px 50px, 100% 100px;
+            animation: marketFlow 60s linear infinite;
+            color: #ffffff;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
-            line-height: 1.6;
+            min-height: 100vh;
+            padding: 50px 20px;
         }
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-        }
+        .container { max-width: 580px; width: 100%; z-index: 1; }
 
-        /* Profile Section */
-        .profile {
+        /* Header 設計 */
+        .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 45px;
+            animation: slideIn 0.8s ease;
         }
 
-        .profile h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #3fb950, #2ea043);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .trading-logo {
+            font-size: 50px;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
+            display: inline-block;
         }
 
-        .profile p {
-            color: var(--gray-text);
+        .header h1 {
+            font-size: 32px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 3px 3px 10px rgba(0,0,0,0.8);
+        }
+
+        .header p {
+            color: #848e9c;
             font-size: 14px;
+            margin-top: 8px;
+            letter-spacing: 1px;
         }
 
-        /* Section Styling */
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent-color);
-            margin: 25px 0 15px 5px;
+        /* 區塊大綱標題 */
+        .section-label {
+            font-size: 14px;
+            color: var(--accent-gold);
+            margin: 30px 0 15px 5px;
+            font-weight: bold;
             display: flex;
             align-items: center;
+            gap: 10px;
+            opacity: 0.8;
         }
 
-        .section-title i {
-            margin-right: 8px;
+        .section-label::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--accent-gold), transparent);
         }
 
-        /* Card Link Styling */
-        .link-card {
-            background-color: var(--card-bg);
+        /* 連結卡片：精緻質感 */
+        .card {
+            background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 12px;
-            text-decoration: none;
-            color: var(--text-color);
-            display: flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-
-        .link-card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-            background-color: #1c2128;
-        }
-
-        .icon {
-            font-size: 24px;
-            width: 40px;
-            text-align: center;
-            margin-right: 15px;
-            color: var(--accent-color);
-        }
-
-        .content h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .content p {
-            font-size: 13px;
-            color: var(--gray-text);
-        }
-
-        /* Platform Invitation Specific */
-        .invitation-box {
-            background: linear-gradient(145deg, #161b22, #0d1117);
-            border: 1px dashed var(--accent-color);
             border-radius: 12px;
             padding: 20px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideIn 0.8s ease backwards;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+            background: rgba(30, 38, 48, 1);
+            border-color: var(--accent-gold);
+            box-shadow: -5px 5px 20px rgba(0,0,0,0.5), 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .card:active { transform: scale(0.98); }
+
+        .card i {
+            font-size: 24px;
+            width: 50px;
+            color: var(--accent-gold);
+            text-align: center;
+        }
+
+        .card-content h3 { font-size: 17px; margin-bottom: 4px; }
+        .card-content p { font-size: 13px; color: #848e9c; }
+
+        /* Bitget 專屬區塊：加強質感 */
+        .bitget-section {
+            background: linear-gradient(135deg, #171d25 0%, #0b0e11 100%);
+            border: 2px solid var(--accent-gold);
+            border-radius: 16px;
+            padding: 30px;
             text-align: center;
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            animation: slideIn 0.8s ease backwards 0.8s;
         }
 
-        .copy-code {
-            background: #21262d;
-            padding: 8px 15px;
-            border-radius: 6px;
-            font-family: monospace;
-            font-size: 18px;
-            color: #fff;
-            margin: 10px 0;
-            display: inline-block;
-            border: 1px solid var(--border-color);
+        .bitget-section::before {
+            content: "VIP";
+            position: absolute;
+            top: 10px;
+            right: -20px;
+            background: var(--accent-gold);
+            color: #000;
+            padding: 2px 30px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        .btn-main {
-            display: block;
-            background-color: var(--accent-color);
-            color: white;
-            text-align: center;
+        .invite-code-wrapper {
+            background: #1e2329;
             padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px dashed var(--accent-gold);
+        }
+
+        .invite-label { font-size: 12px; color: #848e9c; margin-bottom: 5px; }
+        .invite-code { font-size: 24px; font-weight: bold; color: var(--accent-gold); letter-spacing: 2px; }
+
+        .btn-bitget {
+            display: block;
+            background: var(--accent-gold);
+            color: #000;
+            text-align: center;
+            padding: 16px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
-            margin-top: 10px;
+            font-weight: 800;
+            font-size: 16px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 50px;
+        .btn-bitget:hover { background: #f1c40f; transform: translateY(-3px); }
+
+        /* 風險提醒 */
+        .warning {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #ef5350;
             text-align: center;
-            font-size: 12px;
-            color: var(--gray-text);
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            line-height: 1.8;
+            padding: 15px;
+            border-radius: 8px;
+            background: rgba(239, 83, 80, 0.05);
         }
 
-        .risk-warning {
-            background-color: rgba(255, 69, 58, 0.1);
-            color: #ff453a;
-            padding: 12px;
-            border-radius: 8px;
+        .footer {
+            margin: 50px 0;
             font-size: 12px;
-            margin-top: 20px;
-            border: 1px solid rgba(255, 69, 58, 0.2);
+            color: #474d57;
+            text-align: center;
         }
+
+        /* 延遲動畫處理 */
+        .c1 { animation-delay: 0.2s; }
+        .c2 { animation-delay: 0.3s; }
+        .c3 { animation-delay: 0.4s; }
+        .c4 { animation-delay: 0.5s; }
+        .c5 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="profile">
+    <header class="header">
+        <div class="trading-logo">
+            <i class="fas fa-chart-line"></i>
+        </div>
         <h1>韓信 Han Crypto</h1>
-        <p>📍 認明官方唯一帳號：han_crypto25</p>
-    </div>
+        <p>📊 交易市場觀測站 | 實戰觀念分享</p>
+    </header>
 
-    <div class="section-title"><i class="fas fa-share-nodes"></i> 官方社群平台</div>
+    <div class="section-label">LIVE STREAMING & CONTENT</div>
     
-    <a href="https://portaly.cc/552888" class="link-card">
-        <div class="icon"><i class="fas fa-layer-group"></i></div>
-        <div class="content">
-            <h3>社群整合入口 (Portaly)</h3>
-            <p>官方連結總匯，適合第一次認識我的朋友。</p>
+    <a href="https://youtube.com/@han_crypto6925?si=5DBX45MrhpoVcRnn" class="card c1">
+        <i class="fab fa-youtube"></i>
+        <div class="card-content">
+            <h3>YouTube 實戰頻道</h3>
+            <p>深度市場解構、技術分析與交易心法。</p>
         </div>
     </a>
 
-    <a href="https://www.instagram.com/han_crypto25" class="link-card">
-        <div class="icon"><i class="fab fa-instagram"></i></div>
-        <div class="content">
+    <a href="https://www.tiktok.com/@han_crypto6925" class="card c2">
+        <i class="fab fa-tiktok"></i>
+        <div class="card-content">
+            <h3>TikTok 每日快訊</h3>
+            <p>即時行情重點與市場情緒解讀。</p>
+        </div>
+    </a>
+
+    <div class="section-label">COMMUNITY & SOCIAL</div>
+
+    <a href="https://www.instagram.com/han_crypto25" class="card c3">
+        <i class="fab fa-instagram"></i>
+        <div class="card-content">
             <h3>Instagram</h3>
-            <p>盤勢解析、交易心法與實戰經驗分享。</p>
+            <p>每日盤勢觀察與真實交易心路歷程。</p>
         </div>
     </a>
 
-    <a href="https://www.threads.com/@han_crypto25" class="link-card">
-        <div class="icon"><i class="fas fa-at"></i></div>
-        <div class="content">
-            <h3>Threads</h3>
-            <p>即時市場想法、情緒分析與交易隨筆。</p>
+    <a href="https://line.me/ti/g2/Lv_B81WTBTybsBLfqIOHNiHfeG7pvDtXMymerw" class="card c4">
+        <i class="fab fa-line"></i>
+        <div class="card-content">
+            <h3>LINE 實戰交流群</h3>
+            <p>與純粹的交易者一起建立正確生存思維。</p>
         </div>
     </a>
 
-    <div class="section-title"><i class="fas fa-comments"></i> 實戰交流</div>
-
-    <a href="https://line.me/ti/g2/Lv_B81WTBTybsBLfqIOHNiHfeG7pvDtXMymerw" class="link-card">
-        <div class="icon"><i class="fab fa-line"></i></div>
-        <div class="content">
-            <h3>LINE 交易觀念社群</h3>
-            <p>建立長期生存思維，拒絕盲目喊單。</p>
+    <a href="https://portaly.cc/552888" class="card c5">
+        <i class="fas fa-link"></i>
+        <div class="card-content">
+            <h3>Portaly 官方整合頁</h3>
+            <p>一站式存取所有官方資源與連結。</p>
         </div>
     </a>
 
-    <div class="section-title"><i class="fas fa-chart-line"></i> 推薦交易工具</div>
+    <div class="section-label">TRADING PARTNER</div>
 
-    <div class="invitation-box">
-        <h3>Bitget 交易所官方合作</h3>
-        <p style="font-size: 13px; color: var(--gray-text);">享有完整功能與專屬手續費優惠</p>
-        <div class="copy-code">邀請碼：nsqv</div>
-        <a href="https://partner.bitget.fit/bg/XA5BUS" class="btn-main">立即註冊領取優惠</a>
+    <div class="bitget-section">
+        <h3 style="color: var(--accent-gold);">Bitget 官方邀請計畫</h3>
+        <div class="invite-code-wrapper">
+            <div class="invite-label">專屬推薦邀請碼</div>
+            <div class="invite-code">nsqv</div>
+        </div>
+        <p style="font-size: 13px; color: #848e9c; margin-bottom: 20px;">
+            透過下方連結註冊，即享有手續費專屬折扣與新手入金福利。
+        </p>
+        <a href="https://partner.bitget.fit/bg/XA5BUS" class="btn-bitget">立即前往註冊 Bitget</a>
     </div>
 
-    <div class="risk-warning">
-        ⚠️ 交易具風險：加密貨幣市場波動大，請務必自行評估風險，做好資金控管。本頁面內容非投資建議。
+    <div class="warning">
+        ⚠️ 交易風險提示：加密貨幣交易具有高波動性與風險，請務必確保具備風險控管意識。本站內容均不構成任何形式的投資建議 (NFA)。
     </div>
 
-    <div class="footer">
-        © 2026 Han Crypto. All Rights Reserved.<br>
-        本頁面所有連結皆為官方正式資源。
-    </div>
+    <footer class="footer">
+        © 2026 Han Crypto. All Rights Reserved. <br>
+        認明官方識別 ID: han_crypto25
+    </footer>
 </div>
 
 </body>
