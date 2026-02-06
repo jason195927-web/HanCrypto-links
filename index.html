@@ -3,292 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>韓信 Han Crypto | 官方連結總覽</title>
+    <title>韓信 Han Crypto | 官方導航</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --accent-gold: #d4af37;
-            --kline-up: #00c076;    /* 交易所標準綠 */
-            --kline-down: #ff3b30;  /* 交易所標準紅 */
-            --bg-deep: #0b0e11;     /* 幣安/Bitget 標配深色背景 */
-            --card-bg: rgba(23, 29, 37, 0.9);
-            --border-color: rgba(212, 175, 55, 0.3);
+            --gold: #d4af37;
+            --up: #00c076;
+            --down: #ff3b30;
+            --bg: #0b0e11;
+            --card-bg: rgba(23, 29, 37, 0.95);
         }
 
-        /* 背景動畫：模擬 K 線走勢流動 */
         @keyframes marketFlow {
-            0% { background-position: 0% 0%; }
-            100% { background-position: 1000px 0%; }
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 1000px; }
         }
 
-        /* 全局字體與平滑動畫 */
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "PingFang TC", "Inter", sans-serif; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; }
 
         body {
-            background-color: var(--bg-deep);
-            /* 繪製專業交易網格與模擬 K 線紋理 */
+            background-color: var(--bg);
             background-image: 
-                linear-gradient(rgba(0, 192, 118, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 59, 48, 0.05) 1px, transparent 1px),
-                linear-gradient(rgba(212, 175, 55, 0.02) 2px, transparent 2px);
-            background-size: 50px 50px, 50px 50px, 100% 100px;
-            animation: marketFlow 60s linear infinite;
-            color: #ffffff;
+                linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            animation: marketFlow 100s linear infinite;
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
             padding: 50px 20px;
         }
 
-        .container { max-width: 580px; width: 100%; z-index: 1; }
+        .container { max-width: 550px; width: 100%; z-index: 10; }
 
-        /* Header 設計 */
-        .header {
-            text-align: center;
-            margin-bottom: 45px;
-            animation: slideIn 0.8s ease;
+        /* 標題與 LOGO */
+        .header { text-align: center; margin-bottom: 40px; }
+        .logo-icon {
+            font-size: 50px; color: var(--gold); margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px rgba(212,175,55,0.6));
+        }
+        .header h1 { 
+            font-size: 36px; color: var(--gold); 
+            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            letter-spacing: 5px; font-weight: 900;
+        }
+        .header p { color: #848e9c; font-size: 15px; letter-spacing: 2px; margin-top: 10px; font-weight: bold; }
+
+        /* 專業 K 線遊戲區 - 強化顯現 */
+        .k-game {
+            background: #161a1e;
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        }
+        .game-title { text-align: center; color: var(--gold); font-weight: bold; margin-bottom: 15px; }
+        .chart-frame {
+            height: 220px; display: flex; align-items: flex-start; justify-content: space-between;
+            background: #000; border-radius: 12px; padding: 20px 5px; margin-bottom: 25px;
+            border: 1px solid #333; overflow: hidden; position: relative;
+        }
+        .candle { position: relative; flex: 1; margin: 0 2px; height: 100%; display: flex; flex-direction: column; align-items: center; }
+        .wick { position: absolute; width: 1px; background: currentColor; opacity: 0.7; z-index: 1; }
+        .body { width: 100%; border-radius: 1px; position: relative; z-index: 2; }
+        .game-btns { display: flex; gap: 15px; }
+        .predict-btn { flex: 1; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; transition: 0.3s; }
+        .btn-up { background: var(--up); color: #000; }
+        .btn-down { background: var(--down); color: #fff; }
+
+        /* 分類大綱 */
+        .category-title {
+            font-size: 16px; color: var(--gold); font-weight: bold; margin: 30px 0 15px 5px;
+            display: flex; align-items: center; letter-spacing: 1px;
+        }
+        .category-title::before { content: ""; width: 4px; height: 18px; background: var(--gold); margin-right: 10px; border-radius: 2px; }
+
+        /* 連結卡片 */
+        .link-card {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px; padding: 22px; margin-bottom: 18px;
+            text-decoration: none; color: white; display: flex; align-items: center; transition: 0.3s;
+        }
+        .link-card:hover { transform: translateX(12px); border-color: var(--gold); background: rgba(30,35,45,0.95); }
+        .link-card i { font-size: 28px; width: 60px; color: var(--gold); text-align: center; }
+        .link-text h3 { font-size: 19px; margin-bottom: 5px; font-weight: bold; }
+        .link-text p { font-size: 14px; color: #848e9c; line-height: 1.5; }
+
+        /* Bitget 尊榮專區 - 移除跟單，強調預測教學 */
+        .bitget-premium {
+            background: linear-gradient(145deg, #1e2329 0%, #0b0e11 100%);
+            border: 2px solid var(--gold); border-radius: 20px; padding: 35px;
+            text-align: center; margin-top: 40px; position: relative; overflow: hidden;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
+        }
+        .bitget-premium::before {
+            content: "PARTNER"; position: absolute; top: 10px; right: -30px;
+            background: var(--gold); color: black; font-size: 10px; font-weight: bold;
+            padding: 5px 40px; transform: rotate(45deg);
+        }
+        .bitget-logo { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .bitget-logo span { color: #00f0ff; }
+        .premium-desc { color: #848e9c; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        .code-wrap {
+            background: rgba(255,255,255,0.05); border: 1px dashed var(--gold);
+            border-radius: 12px; padding: 15px; margin-bottom: 25px;
+        }
+        .code-label { font-size: 12px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; display: block; }
+        .code-val { font-size: 32px; font-weight: 900; color: #fff; letter-spacing: 8px; }
+        .btn-reg {
+            display: block; background: var(--gold); color: #000; padding: 18px;
+            border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 18px;
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
-        .trading-logo {
-            font-size: 50px;
-            color: var(--accent-gold);
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
-            display: inline-block;
-        }
-
-        .header h1 {
-            font-size: 32px;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 3px 3px 10px rgba(0,0,0,0.8);
-        }
-
-        .header p {
-            color: #848e9c;
-            font-size: 14px;
-            margin-top: 8px;
-            letter-spacing: 1px;
-        }
-
-        /* 區塊大綱標題 */
-        .section-label {
-            font-size: 14px;
-            color: var(--accent-gold);
-            margin: 30px 0 15px 5px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            opacity: 0.8;
-        }
-
-        .section-label::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, var(--accent-gold), transparent);
-        }
-
-        /* 連結卡片：精緻質感 */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 16px;
-            text-decoration: none;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: slideIn 0.8s ease backwards;
-        }
-
-        .card:hover {
-            transform: translateX(10px);
-            background: rgba(30, 38, 48, 1);
-            border-color: var(--accent-gold);
-            box-shadow: -5px 5px 20px rgba(0,0,0,0.5), 0 0 10px rgba(212, 175, 55, 0.2);
-        }
-
-        .card:active { transform: scale(0.98); }
-
-        .card i {
-            font-size: 24px;
-            width: 50px;
-            color: var(--accent-gold);
-            text-align: center;
-        }
-
-        .card-content h3 { font-size: 17px; margin-bottom: 4px; }
-        .card-content p { font-size: 13px; color: #848e9c; }
-
-        /* Bitget 專屬區塊：加強質感 */
-        .bitget-section {
-            background: linear-gradient(135deg, #171d25 0%, #0b0e11 100%);
-            border: 2px solid var(--accent-gold);
-            border-radius: 16px;
-            padding: 30px;
-            text-align: center;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-            animation: slideIn 0.8s ease backwards 0.8s;
-        }
-
-        .bitget-section::before {
-            content: "VIP";
-            position: absolute;
-            top: 10px;
-            right: -20px;
-            background: var(--accent-gold);
-            color: #000;
-            padding: 2px 30px;
-            transform: rotate(45deg);
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .invite-code-wrapper {
-            background: #1e2329;
-            padding: 12px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px dashed var(--accent-gold);
-        }
-
-        .invite-label { font-size: 12px; color: #848e9c; margin-bottom: 5px; }
-        .invite-code { font-size: 24px; font-weight: bold; color: var(--accent-gold); letter-spacing: 2px; }
-
-        .btn-bitget {
-            display: block;
-            background: var(--accent-gold);
-            color: #000;
-            text-align: center;
-            padding: 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: 16px;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-bitget:hover { background: #f1c40f; transform: translateY(-3px); }
-
-        /* 風險提醒 */
-        .warning {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #ef5350;
-            text-align: center;
-            line-height: 1.8;
-            padding: 15px;
-            border-radius: 8px;
-            background: rgba(239, 83, 80, 0.05);
-        }
-
-        .footer {
-            margin: 50px 0;
-            font-size: 12px;
-            color: #474d57;
-            text-align: center;
-        }
-
-        /* 延遲動畫處理 */
-        .c1 { animation-delay: 0.2s; }
-        .c2 { animation-delay: 0.3s; }
-        .c3 { animation-delay: 0.4s; }
-        .c4 { animation-delay: 0.5s; }
-        .c5 { animation-delay: 0.6s; }
+        .footer { margin-top: 60px; font-size: 13px; color: #474d57; text-align: center; line-height: 1.8; padding-bottom: 50px;}
     </style>
 </head>
 <body>
 
 <div class="container">
     <header class="header">
-        <div class="trading-logo">
-            <i class="fas fa-chart-line"></i>
-        </div>
+        <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
         <h1>韓信 Han Crypto</h1>
-        <p>📊 交易市場觀測站 | 實戰觀念分享</p>
+        <p>「以交易為名，行生存之道」</p>
     </header>
 
-    <div class="section-label">LIVE STREAMING & CONTENT</div>
-    
-    <a href="https://youtube.com/@han_crypto6925?si=5DBX45MrhpoVcRnn" class="card c1">
-        <i class="fab fa-youtube"></i>
-        <div class="card-content">
-            <h3>YouTube 實戰頻道</h3>
-            <p>深度市場解構、技術分析與交易心法。</p>
+    <div class="k-game">
+        <div class="game-title">📊 盤感實戰挑戰：下一根 K 線走向？</div>
+        <div class="chart-frame" id="chart-frame">
+            </div>
+        <div class="game-btns" id="btn-group">
+            <button class="predict-btn btn-up" onclick="play('up')">看漲 (LONG)</button>
+            <button class="predict-btn btn-down" onclick="play('down')">看跌 (SHORT)</button>
         </div>
-    </a>
-
-    <a href="https://www.tiktok.com/@han_crypto6925" class="card c2">
-        <i class="fab fa-tiktok"></i>
-        <div class="card-content">
-            <h3>TikTok 每日快訊</h3>
-            <p>即時行情重點與市場情緒解讀。</p>
-        </div>
-    </a>
-
-    <div class="section-label">COMMUNITY & SOCIAL</div>
-
-    <a href="https://www.instagram.com/han_crypto25" class="card c3">
-        <i class="fab fa-instagram"></i>
-        <div class="card-content">
-            <h3>Instagram</h3>
-            <p>每日盤勢觀察與真實交易心路歷程。</p>
-        </div>
-    </a>
-
-    <a href="https://line.me/ti/g2/Lv_B81WTBTybsBLfqIOHNiHfeG7pvDtXMymerw" class="card c4">
-        <i class="fab fa-line"></i>
-        <div class="card-content">
-            <h3>LINE 實戰交流群</h3>
-            <p>與純粹的交易者一起建立正確生存思維。</p>
-        </div>
-    </a>
-
-    <a href="https://portaly.cc/552888" class="card c5">
-        <i class="fas fa-link"></i>
-        <div class="card-content">
-            <h3>Portaly 官方整合頁</h3>
-            <p>一站式存取所有官方資源與連結。</p>
-        </div>
-    </a>
-
-    <div class="section-label">TRADING PARTNER</div>
-
-    <div class="bitget-section">
-        <h3 style="color: var(--accent-gold);">Bitget 官方邀請計畫</h3>
-        <div class="invite-code-wrapper">
-            <div class="invite-label">專屬推薦邀請碼</div>
-            <div class="invite-code">nsqv</div>
-        </div>
-        <p style="font-size: 13px; color: #848e9c; margin-bottom: 20px;">
-            透過下方連結註冊，即享有手續費專屬折扣與新手入金福利。
-        </p>
-        <a href="https://partner.bitget.fit/bg/XA5BUS" class="btn-bitget">立即前往註冊 Bitget</a>
+        <div id="fb" style="margin-top:20px; font-size:18px; font-weight:900; display:none; text-align: center;"></div>
     </div>
 
-    <div class="warning">
-        ⚠️ 交易風險提示：加密貨幣交易具有高波動性與風險，請務必確保具備風險控管意識。本站內容均不構成任何形式的投資建議 (NFA)。
+    <div class="category-title">實戰影音教學</div>
+    <a href="https://youtube.com/@han_crypto6925?si=5DBX45MrhpoVcRnn" class="link-card">
+        <i class="fab fa-youtube"></i>
+        <div class="link-text">
+            <h3>YouTube 實戰頻道</h3>
+            <p>深度市場邏輯解構，帶你透視 K 線背後的莊家思維。</p>
+        </div>
+    </a>
+    <a href="https://www.tiktok.com/@han_crypto6925" class="link-card">
+        <i class="fab fa-tiktok"></i>
+        <div class="link-text">
+            <h3>TikTok 每日快訊</h3>
+            <p>每日行情重點速報，快節奏掌握當前市場情緒。</p>
+        </div>
+    </a>
+
+    <div class="category-title">社群交流與日常</div>
+    <a href="https://www.instagram.com/han_crypto25" class="link-card">
+        <i class="fab fa-instagram"></i>
+        <div class="link-text">
+            <h3>Instagram</h3>
+            <p>盤勢觀測碎碎念與最真實的交易員生活寫照。</p>
+        </div>
+    </a>
+    <a href="https://line.me/ti/g2/Lv_B81WTBTybsBLfqIOHNiHfeG7pvDtXMymerw" class="link-card">
+        <i class="fab fa-line"></i>
+        <div class="link-text">
+            <h3>LINE 實戰交流群</h3>
+            <p>拒絕盲目操作，與專業交易夥伴一同建立市場生存心法。</p>
+        </div>
+    </a>
+    <a href="https://portaly.cc/552888" class="link-card">
+        <i class="fas fa-layer-group"></i>
+        <div class="link-text">
+            <h3>Portaly 官方整合頁</h3>
+            <p>一站式存取所有韓信官方資源，確保訊息不漏接。</p>
+        </div>
+    </a>
+
+    <div class="bitget-premium">
+        <div class="bitget-logo">Bit<span>get</span> 官方合作計畫</div>
+        <p class="premium-desc">
+            全球領先的加密貨幣交易平台。<br>
+            透過韓信專屬連結註冊，獲取<b>實戰預測教學</b>資源與永久手續費折扣。
+        </p>
+        <div class="code-wrap">
+            <span class="code-label">韓信專屬邀請碼</span>
+            <div class="code-val">nsqv</div>
+        </div>
+        <a href="https://partner.bitget.fit/bg/XA5BUS" class="btn-reg">立即開戶註冊領取優惠</a>
     </div>
 
     <footer class="footer">
-        © 2026 Han Crypto. All Rights Reserved. <br>
-        認明官方識別 ID: han_crypto25
+        ⚠️ 交易風險提示：加密貨幣具有高度波動性。<br>
+        本站內容不構成投資建議，入市需有風控意識。<br>
+        © 2026 Han Crypto | han_crypto25
     </footer>
 </div>
+
+<script>
+    const frame = document.getElementById('chart-frame');
+    let lastClose = 110;
+
+    function createCandle(isResult) {
+        const bodySize = (Math.random() - 0.5) * 50; 
+        const open = lastClose;
+        const close = open + bodySize;
+        const isUp = close > open;
+        const highWick = Math.random() * 20;
+        const lowWick = Math.random() * 20;
+
+        const candle = document.createElement('div');
+        candle.className = 'candle';
+        candle.style.color = isUp ? 'var(--up)' : 'var(--down)';
+        
+        const bodyH = Math.abs(open - close) + 4; 
+        const bodyTop = 180 - Math.max(open, close); 
+        const wickH = bodyH + highWick + lowWick;
+        const wickTop = bodyTop - highWick;
+
+        candle.innerHTML = `
+            <div class="wick" style="height:${wickH}px; top:${wickTop}px;"></div>
+            <div class="body" style="height:${bodyH}px; top:${bodyTop}px; background:currentColor;"></div>
+        `;
+        
+        frame.appendChild(candle);
+        lastClose = close;
+        return isUp;
+    }
+
+    function initChart() {
+        frame.innerHTML = '';
+        lastClose = 90 + Math.random() * 40; 
+        for (let i = 0; i < 15; i++) {
+            createCandle(false);
+        }
+    }
+
+    function play(choice) {
+        const isUp = createCandle(true);
+        const fb = document.getElementById('fb');
+        const bg = document.getElementById('btn-group');
+        bg.style.display = 'none';
+        fb.style.display = 'block';
+        if ((choice === 'up' && isUp) || (choice === 'down' && !isUp)) {
+            fb.innerHTML = `<span style="color:var(--up)">✅ 盤感準確！這波捕獲成功</span>`;
+        } else {
+            fb.innerHTML = `<span style="color:var(--down)">❌ 預判錯誤！市場無情洗盤</span>`;
+        }
+        fb.innerHTML += `<br><button onclick="location.reload()" style="margin-top:15px; background:var(--gold); border:none; color:#000; padding:8px 20px; border-radius:5px; cursor:pointer; font-weight:bold; font-size:14px;">重新挑戰</button>`;
+    }
+
+    // 確保網頁載入後立即執行
+    window.onload = initChart;
+</script>
 
 </body>
 </html>
