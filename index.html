@@ -48,6 +48,16 @@
             z-index: -1;
             opacity: 0.8;
         }
+
+        /* SVG 圖示預設顏色與轉場 */
+        svg {
+            transition: all 0.3s ease;
+            fill: #e0e0e0; /* 預設灰白色 */
+        }
+        .glass-card:hover svg {
+            fill: var(--accent-red); /* 滑鼠游標移過去變成止損紅 */
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -56,111 +66,45 @@
 
     <div class="max-w-4xl mx-auto px-6 py-16">
         
-        <!-- Header: 韓佬品牌主視覺 -->
         <header class="text-center mb-20">
-            <h1 class="text-7xl md:text-9xl bebas text-white mb-2 tracking-tighter">HANLAO RISE</h1>
+            <h1 class="text-7xl md:text-9xl bebas text-white mb-2 tracking-tighterGlitch text-shadow">HANLAO RISE</h1>
             <div class="h-1 w-24 bg-red-800 mx-auto mb-6"></div>
-            <p class="text-gray-400 tracking-[0.3em] uppercase text-xs mb-8">Discipline Creates Freedom</p>
-            <p class="text-xl md:text-2xl font-light text-gray-300 italic">「市場只獎勵紀律的人，而非貪婪的人。」</p>
+            <p class="text-gray-400 tracking-[0.3em] uppercase text-xs mb-8bebas">Discipline Creates Freedom</p>
+            <p class="text-xl md:text-2xl font-light text-gray-300 italic">「市場不相信眼淚，只獎勵紀律的人。」</p>
         </header>
 
-        <!-- 交易所區塊: 實戰入口 (VIP推薦) -->
         <section class="mb-20">
             <h2 class="bebas text-2xl text-gray-500 mb-6 border-b border-gray-800 pb-2">Top Exchanges / 合作交易所</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
-                    <span class="bebas text-xl text-white">Bitunix</span>
-                    <span class="text-xs text-gray-500 mt-4">邀請碼：oz4u</span>
+                <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between">
+                        <span class="bebas text-xl text-white">Bitunix</span>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M12 2L1 12h3v10h16V12h3L12 2zm6 18h-4v-6h-4v6H6v-9.35l6-5.45 6 5.45V20z"/></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：oz4u</span>
                 </a>
-                <a href="https://partner.bybit.com/b/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
-                    <span class="bebas text-xl text-white">Bybit</span>
-                    <span class="text-xs text-gray-500 mt-4">邀請碼：HANLAO26</span>
+                <a href="https://partner.bybit.com/b/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between">
+                        <span class="bebas text-xl text-white">Bybit</span>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：HANLAO26</span>
                 </a>
-                <a href="https://okx.com/join/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
-                    <span class="bebas text-xl text-white">OKX</span>
-                    <span class="text-xs text-gray-500 mt-4">邀請碼：HANLAO26</span>
+                <a href="https://okx.com/join/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
+                    <div class="flex items-center justify-between">
+                        <span class="bebas text-xl text-white">OKX</span>
+                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：HANLAO26</span>
                 </a>
             </div>
         </section>
 
-        <!-- 數據戰績區塊 -->
         <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-            <div class="p-6 border border-gray-900 bg-black/40 text-center">
+            <div class="p-6 border border-gray-900 bg-black/40 text-center glass-card">
+                <svg class="h-6 w-6 mx-auto mb-3" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
                 <p class="text-xs text-gray-600 uppercase mb-2">Win Rate</p>
                 <p class="text-3xl bebas text-white">70.59%</p>
             </div>
-            <div class="p-6 border border-gray-900 bg-black/40 text-center">
-                <p class="text-xs text-gray-600 uppercase mb-2">Strategy</p>
-                <p class="text-3xl bebas text-white">Price Action</p>
-            </div>
-            <div class="p-6 border border-gray-900 bg-black/40 text-center">
-                <p class="text-xs text-gray-600 uppercase mb-2">Risk Ratio</p>
-                <p class="text-3xl bebas text-white">Dynamic</p>
-            </div>
-            <div class="p-6 border border-gray-900 bg-black/40 text-center">
-                <p class="text-xs text-gray-600 uppercase mb-2">Mindset</p>
-                <p class="text-3xl bebas text-white">Zen</p>
-            </div>
-        </section>
-
-        <!-- 社群入口區塊 -->
-        <section class="mb-20">
-            <h2 class="bebas text-2xl text-gray-500 mb-6 border-b border-gray-800 pb-2">Community / 社群入口</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="https://t.me/+EYYN0iT19qs2OTRl" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">Telegram</p>
-                        <p class="text-xs text-gray-500">核心行情與實戰紀錄</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-                <a href="https://reurl.cc/7EWp15" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">LINE Community</p>
-                        <p class="text-xs text-gray-500">加密貨幣討論社群</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-                <a href="https://www.instagram.com/hanlao.rise" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">Instagram</p>
-                        <p class="text-xs text-gray-500">個人IP與生活美學</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-                <a href="https://www.threads.net/@hanlao.rise" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">Threads</p>
-                        <p class="text-xs text-gray-500">每日交易短評與語錄</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-                <a href="https://youtube.com/@hanlao_rise" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">YouTube</p>
-                        <p class="text-xs text-gray-500">實戰影片與深度解析</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-                <a href="https://x.com/hanlaorise26" class="glass-card p-5 flex justify-between items-center group">
-                    <div>
-                        <p class="text-white font-medium">X (Twitter)</p>
-                        <p class="text-xs text-gray-500">全球Web3資訊同步</p>
-                    </div>
-                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
-                </a>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="text-center pt-20 border-t border-gray-900">
-            <p class="text-gray-700 text-[10px] tracking-widest uppercase">
-                &copy; 2026 HANLAO RISE. Market participants only. <br>
-                穩定大於暴利，紀律才是真正的聖杯。
-            </p>
-        </footer>
-
-    </div>
-
-</body>
-</html>
+            <div class="p-6 border border-gray-900 bg-black/40 text-center glass-card">
+                <svg class="h-6 w-6 mx-auto mb-3"
