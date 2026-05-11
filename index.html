@@ -3,108 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HANLAO RISE | 韓佬 - 紀律、覺醒、翻身</title>
+    <title>HANLAO RISE | 韓佬 - 社交媒體連結</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
-            --primary-dark: #050505;
+            --primary-dark: #080808;
             --accent-red: #8B0000;
-            --metal-silver: #A9A9A9;
+            --card-bg: rgba(20, 20, 20, 0.6);
         }
         body {
             background-color: var(--primary-dark);
             color: #e0e0e0;
             font-family: 'Noto Sans TC', sans-serif;
-            overflow-x: hidden;
+            background-image: radial-gradient(circle at 20% 30%, #1a1a1a 0%, #080808 100%);
         }
         .bebas { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
-        
-        /* 霓虹金屬感卡片 */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(12px);
+
+        /* 社交媒體卡片基礎樣式 */
+        .social-card {
+            background: var(--card-bg);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .glass-card:hover {
-            border: 1px solid rgba(139, 0, 0, 0.6);
-            background: rgba(139, 0, 0, 0.05);
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* 交易所專屬漸層 */
-        .exchange-btn {
-            background: linear-gradient(90deg, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
-            border-left: 4px solid var(--accent-red);
+        /* 懸停效果：加上紅色霓虹邊框與圖示放大 */
+        .social-card:hover {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(139, 0, 0, 0.3);
+            transform: translateY(-5px);
         }
 
-        /* 水墨動態背景感 */
-        .ink-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #121212 0%, #050505 100%);
-            z-index: -1;
-            opacity: 0.8;
-        }
-
-        /* SVG 圖示預設顏色與轉場 */
-        svg {
+        .social-card i {
+            font-size: 2.5rem;
             transition: all 0.3s ease;
-            fill: #e0e0e0; /* 預設灰白色 */
+            color: #ffffff;
         }
-        .glass-card:hover svg {
-            fill: var(--accent-red); /* 滑鼠游標移過去變成止損紅 */
+
+        .social-card:hover i {
             transform: scale(1.1);
+        }
+
+        /* 韓系浮水印字體 */
+        .watermark {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            font-size: 3rem;
+            opacity: 0.05;
+            font-weight: 900;
+            pointer-events: none;
+            color: white;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="py-12 px-6">
 
-    <div class="ink-overlay"></div>
-
-    <div class="max-w-4xl mx-auto px-6 py-16">
-        
-        <header class="text-center mb-20">
-            <h1 class="text-7xl md:text-9xl bebas text-white mb-2 tracking-tighterGlitch text-shadow">HANLAO RISE</h1>
-            <div class="h-1 w-24 bg-red-800 mx-auto mb-6"></div>
-            <p class="text-gray-400 tracking-[0.3em] uppercase text-xs mb-8bebas">Discipline Creates Freedom</p>
-            <p class="text-xl md:text-2xl font-light text-gray-300 italic">「市場不相信眼淚，只獎勵紀律的人。」</p>
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-16 text-left border-l-4 border-red-800 pl-6">
+            <h1 class="text-5xl font-black mb-2 tracking-tighter">韓佬 | 社交媒體連結</h1>
+            <p class="text-gray-500 bebas text-lg">HANLAO RISE SOCIAL ECOSYSTEM</p>
         </header>
 
-        <section class="mb-20">
-            <h2 class="bebas text-2xl text-gray-500 mb-6 border-b border-gray-800 pb-2">Top Exchanges / 合作交易所</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
-                    <div class="flex items-center justify-between">
-                        <span class="bebas text-xl text-white">Bitunix</span>
-                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M12 2L1 12h3v10h16V12h3L12 2zm6 18h-4v-6h-4v6H6v-9.35l6-5.45 6 5.45V20z"/></svg>
-                    </div>
-                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：oz4u</span>
-                </a>
-                <a href="https://partner.bybit.com/b/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
-                    <div class="flex items-center justify-between">
-                        <span class="bebas text-xl text-white">Bybit</span>
-                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：HANLAO26</span>
-                </a>
-                <a href="https://okx.com/join/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between group">
-                    <div class="flex items-center justify-between">
-                        <span class="bebas text-xl text-white">OKX</span>
-                        <svg class="h-6 w-6" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><circle cx="12" cy="12" r="3"/></svg>
-                    </div>
-                    <span class="text-xs text-gray-500 mt-4 group-hover:text-white transition-colors">邀請碼：HANLAO26</span>
-                </a>
-            </div>
-        </section>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+            
+            <a href="https://youtube.com/@hanlao_rise" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fab fa-youtube text-red-600"></i>
+                    <span class="text-xs text-gray-600 bebas">SUBSCRIBE</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">YouTube</h3>
+                <p class="text-gray-500 text-sm">實戰影片與深度解析</p>
+                <div class="watermark">韓</div>
+            </a>
 
-        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
-            <div class="p-6 border border-gray-900 bg-black/40 text-center glass-card">
-                <svg class="h-6 w-6 mx-auto mb-3" viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
-                <p class="text-xs text-gray-600 uppercase mb-2">Win Rate</p>
-                <p class="text-3xl bebas text-white">70.59%</p>
-            </div>
-            <div class="p-6 border border-gray-900 bg-black/40 text-center glass-card">
-                <svg class="h-6 w-6 mx-auto mb-3"
+            <a href="https://www.instagram.com/hanlao.rise" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fab fa-instagram"></i>
+                    <span class="text-xs text-gray-600 bebas">FOLLOW</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">Instagram</h3>
+                <p class="text-gray-500 text-sm">個人IP與生活美學</p>
+                <div class="watermark">韓</div>
+            </a>
+
+            <a href="https://www.threads.net/@hanlao.rise" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fa-brands fa-threads"></i>
+                    <span class="text-xs text-gray-600 bebas">THOUGHTS</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">Threads</h3>
+                <p class="text-gray-500 text-sm">每日交易短評與語錄</p>
+                <div class="watermark">韓</div>
+            </a>
+
+            <a href="https://t.me/+EYYN0iT19qs2OTRl" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fab fa-telegram-plane text-blue-400"></i>
+                    <span class="text-xs text-gray-600 bebas">JOIN</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">Telegram</h3>
+                <p class="text-gray-500 text-sm">核心行情與實戰紀錄</p>
+                <div class="watermark">韓</div>
+            </a>
+
+            <a href="https://reurl.cc/7EWp15" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fab fa-line text-green-500"></i>
+                    <span class="text-xs text-gray-600 bebas">COMMUNITY</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">LINE</h3>
+                <p class="text-gray-500 text-sm">加密貨幣討論社群</p>
+                <div class="watermark">韓</div>
+            </a>
+
+            <a href="https://www.tiktok.com/@hanlao.rise" class="social-card p-8 rounded-xl group">
+                <div class="flex items-center justify-between mb-6">
+                    <i class="fab fa-tiktok"></i>
+                    <span class="text-xs text-gray-600 bebas">REELS</span>
+                </div>
+                <h3 class="text-2xl font-bold mb-1">TikTok</h3>
+                <p class="text-gray-500 text-sm">短影音實戰教學</p>
+                <div class="watermark">韓</div>
+            </a>
+
+        </div>
+
+        <footer class="text-center text-gray-700 text-xs tracking-widest">
+            <p>© 2026 HANLAO RISE. 所有連結皆為官方唯一認證。</p>
+        </footer>
+    </div>
+
+</body>
+</html>
