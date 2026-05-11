@@ -3,259 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>韓信 Han Crypto | 官方導航</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>HANLAO RISE | 韓佬 - 紀律、覺醒、翻身</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         :root {
-            --gold: #d4af37;
-            --up: #00c076;
-            --down: #ff3b30;
-            --bg: #0b0e11;
-            --card-bg: rgba(23, 29, 37, 0.95);
+            --primary-dark: #050505;
+            --accent-red: #8B0000;
+            --metal-silver: #A9A9A9;
         }
-
-        @keyframes marketFlow {
-            0% { background-position: 0 0; }
-            100% { background-position: 1000px 1000px; }
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: "PingFang TC", "Microsoft JhengHei", sans-serif; }
-
         body {
-            background-color: var(--bg);
-            background-image: 
-                linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            animation: marketFlow 100s linear infinite;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
+            background-color: var(--primary-dark);
+            color: #e0e0e0;
+            font-family: 'Noto Sans TC', sans-serif;
+            overflow-x: hidden;
+        }
+        .bebas { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
+        
+        /* 霓虹金屬感卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover {
+            border: 1px solid rgba(139, 0, 0, 0.6);
+            background: rgba(139, 0, 0, 0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .container { max-width: 550px; width: 100%; z-index: 10; }
-
-        /* 標題與 LOGO */
-        .header { text-align: center; margin-bottom: 40px; }
-        .logo-icon {
-            font-size: 50px; color: var(--gold); margin-bottom: 15px;
-            filter: drop-shadow(0 0 15px rgba(212,175,55,0.6));
-        }
-        .header h1 { 
-            font-size: 36px; color: var(--gold); 
-            text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
-            letter-spacing: 5px; font-weight: 900;
-        }
-        .header p { color: #848e9c; font-size: 15px; letter-spacing: 2px; margin-top: 10px; font-weight: bold; }
-
-        /* 專業 K 線遊戲區 - 強化顯現 */
-        .k-game {
-            background: #161a1e;
-            border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
-        }
-        .game-title { text-align: center; color: var(--gold); font-weight: bold; margin-bottom: 15px; }
-        .chart-frame {
-            height: 220px; display: flex; align-items: flex-start; justify-content: space-between;
-            background: #000; border-radius: 12px; padding: 20px 5px; margin-bottom: 25px;
-            border: 1px solid #333; overflow: hidden; position: relative;
-        }
-        .candle { position: relative; flex: 1; margin: 0 2px; height: 100%; display: flex; flex-direction: column; align-items: center; }
-        .wick { position: absolute; width: 1px; background: currentColor; opacity: 0.7; z-index: 1; }
-        .body { width: 100%; border-radius: 1px; position: relative; z-index: 2; }
-        .game-btns { display: flex; gap: 15px; }
-        .predict-btn { flex: 1; padding: 15px; border: none; border-radius: 10px; font-size: 18px; font-weight: 900; cursor: pointer; transition: 0.3s; }
-        .btn-up { background: var(--up); color: #000; }
-        .btn-down { background: var(--down); color: #fff; }
-
-        /* 分類大綱 */
-        .category-title {
-            font-size: 16px; color: var(--gold); font-weight: bold; margin: 30px 0 15px 5px;
-            display: flex; align-items: center; letter-spacing: 1px;
-        }
-        .category-title::before { content: ""; width: 4px; height: 18px; background: var(--gold); margin-right: 10px; border-radius: 2px; }
-
-        /* 連結卡片 */
-        .link-card {
-            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px; padding: 22px; margin-bottom: 18px;
-            text-decoration: none; color: white; display: flex; align-items: center; transition: 0.3s;
-        }
-        .link-card:hover { transform: translateX(12px); border-color: var(--gold); background: rgba(30,35,45,0.95); }
-        .link-card i { font-size: 28px; width: 60px; color: var(--gold); text-align: center; }
-        .link-text h3 { font-size: 19px; margin-bottom: 5px; font-weight: bold; }
-        .link-text p { font-size: 14px; color: #848e9c; line-height: 1.5; }
-
-        /* Bitget 尊榮專區 - 移除跟單，強調預測教學 */
-        .bitget-premium {
-            background: linear-gradient(145deg, #1e2329 0%, #0b0e11 100%);
-            border: 2px solid var(--gold); border-radius: 20px; padding: 35px;
-            text-align: center; margin-top: 40px; position: relative; overflow: hidden;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.2);
-        }
-        .bitget-premium::before {
-            content: "PARTNER"; position: absolute; top: 10px; right: -30px;
-            background: var(--gold); color: black; font-size: 10px; font-weight: bold;
-            padding: 5px 40px; transform: rotate(45deg);
-        }
-        .bitget-logo { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 10px; }
-        .bitget-logo span { color: #00f0ff; }
-        .premium-desc { color: #848e9c; font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
-        .code-wrap {
-            background: rgba(255,255,255,0.05); border: 1px dashed var(--gold);
-            border-radius: 12px; padding: 15px; margin-bottom: 25px;
-        }
-        .code-label { font-size: 12px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; display: block; }
-        .code-val { font-size: 32px; font-weight: 900; color: #fff; letter-spacing: 8px; }
-        .btn-reg {
-            display: block; background: var(--gold); color: #000; padding: 18px;
-            border-radius: 12px; text-decoration: none; font-weight: 900; font-size: 18px;
-            transition: 0.3s; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        /* 交易所專屬漸層 */
+        .exchange-btn {
+            background: linear-gradient(90deg, rgba(30,30,30,1) 0%, rgba(10,10,10,1) 100%);
+            border-left: 4px solid var(--accent-red);
         }
 
-        .footer { margin-top: 60px; font-size: 13px; color: #474d57; text-align: center; line-height: 1.8; padding-bottom: 50px;}
+        /* 水墨動態背景感 */
+        .ink-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #121212 0%, #050505 100%);
+            z-index: -1;
+            opacity: 0.8;
+        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-<div class="container">
-    <header class="header">
-        <div class="logo-icon"><i class="fas fa-chart-line"></i></div>
-        <h1>韓信 Han Crypto</h1>
-        <p>「以交易為名，行生存之道」</p>
-    </header>
+    <div class="ink-overlay"></div>
 
-    <div class="k-game">
-        <div class="game-title">📊 盤感實戰挑戰：下一根 K 線走向？</div>
-        <div class="chart-frame" id="chart-frame">
+    <div class="max-w-4xl mx-auto px-6 py-16">
+        
+        <!-- Header: 韓佬品牌主視覺 -->
+        <header class="text-center mb-20">
+            <h1 class="text-7xl md:text-9xl bebas text-white mb-2 tracking-tighter">HANLAO RISE</h1>
+            <div class="h-1 w-24 bg-red-800 mx-auto mb-6"></div>
+            <p class="text-gray-400 tracking-[0.3em] uppercase text-xs mb-8">Discipline Creates Freedom</p>
+            <p class="text-xl md:text-2xl font-light text-gray-300 italic">「市場只獎勵紀律的人，而非貪婪的人。」</p>
+        </header>
+
+        <!-- 交易所區塊: 實戰入口 (VIP推薦) -->
+        <section class="mb-20">
+            <h2 class="bebas text-2xl text-gray-500 mb-6 border-b border-gray-800 pb-2">Top Exchanges / 合作交易所</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
+                    <span class="bebas text-xl text-white">Bitunix</span>
+                    <span class="text-xs text-gray-500 mt-4">邀請碼：oz4u</span>
+                </a>
+                <a href="https://partner.bybit.com/b/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
+                    <span class="bebas text-xl text-white">Bybit</span>
+                    <span class="text-xs text-gray-500 mt-4">邀請碼：HANLAO26</span>
+                </a>
+                <a href="https://okx.com/join/HANLAO26" target="_blank" class="glass-card exchange-btn p-6 flex flex-col justify-between">
+                    <span class="bebas text-xl text-white">OKX</span>
+                    <span class="text-xs text-gray-500 mt-4">邀請碼：HANLAO26</span>
+                </a>
             </div>
-        <div class="game-btns" id="btn-group">
-            <button class="predict-btn btn-up" onclick="play('up')">看漲 (LONG)</button>
-            <button class="predict-btn btn-down" onclick="play('down')">看跌 (SHORT)</button>
-        </div>
-        <div id="fb" style="margin-top:20px; font-size:18px; font-weight:900; display:none; text-align: center;"></div>
+        </section>
+
+        <!-- 數據戰績區塊 -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
+            <div class="p-6 border border-gray-900 bg-black/40 text-center">
+                <p class="text-xs text-gray-600 uppercase mb-2">Win Rate</p>
+                <p class="text-3xl bebas text-white">70.59%</p>
+            </div>
+            <div class="p-6 border border-gray-900 bg-black/40 text-center">
+                <p class="text-xs text-gray-600 uppercase mb-2">Strategy</p>
+                <p class="text-3xl bebas text-white">Price Action</p>
+            </div>
+            <div class="p-6 border border-gray-900 bg-black/40 text-center">
+                <p class="text-xs text-gray-600 uppercase mb-2">Risk Ratio</p>
+                <p class="text-3xl bebas text-white">Dynamic</p>
+            </div>
+            <div class="p-6 border border-gray-900 bg-black/40 text-center">
+                <p class="text-xs text-gray-600 uppercase mb-2">Mindset</p>
+                <p class="text-3xl bebas text-white">Zen</p>
+            </div>
+        </section>
+
+        <!-- 社群入口區塊 -->
+        <section class="mb-20">
+            <h2 class="bebas text-2xl text-gray-500 mb-6 border-b border-gray-800 pb-2">Community / 社群入口</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://t.me/+EYYN0iT19qs2OTRl" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">Telegram</p>
+                        <p class="text-xs text-gray-500">核心行情與實戰紀錄</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+                <a href="https://reurl.cc/7EWp15" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">LINE Community</p>
+                        <p class="text-xs text-gray-500">加密貨幣討論社群</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+                <a href="https://www.instagram.com/hanlao.rise" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">Instagram</p>
+                        <p class="text-xs text-gray-500">個人IP與生活美學</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+                <a href="https://www.threads.net/@hanlao.rise" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">Threads</p>
+                        <p class="text-xs text-gray-500">每日交易短評與語錄</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+                <a href="https://youtube.com/@hanlao_rise" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">YouTube</p>
+                        <p class="text-xs text-gray-500">實戰影片與深度解析</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+                <a href="https://x.com/hanlaorise26" class="glass-card p-5 flex justify-between items-center group">
+                    <div>
+                        <p class="text-white font-medium">X (Twitter)</p>
+                        <p class="text-xs text-gray-500">全球Web3資訊同步</p>
+                    </div>
+                    <span class="text-gray-700 group-hover:text-red-800 transition-colors">▶</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center pt-20 border-t border-gray-900">
+            <p class="text-gray-700 text-[10px] tracking-widest uppercase">
+                &copy; 2026 HANLAO RISE. Market participants only. <br>
+                穩定大於暴利，紀律才是真正的聖杯。
+            </p>
+        </footer>
+
     </div>
-
-    <div class="category-title">實戰影音教學</div>
-    <a href="https://youtube.com/@han_crypto6925?si=5DBX45MrhpoVcRnn" class="link-card">
-        <i class="fab fa-youtube"></i>
-        <div class="link-text">
-            <h3>YouTube 實戰頻道</h3>
-            <p>深度市場邏輯解構，帶你透視 K 線背後的莊家思維。</p>
-        </div>
-    </a>
-    <a href="https://www.tiktok.com/@han_crypto6925" class="link-card">
-        <i class="fab fa-tiktok"></i>
-        <div class="link-text">
-            <h3>TikTok 每日快訊</h3>
-            <p>每日行情重點速報，快節奏掌握當前市場情緒。</p>
-        </div>
-    </a>
-
-    <div class="category-title">社群交流與日常</div>
-    <a href="https://www.instagram.com/han_crypto25" class="link-card">
-        <i class="fab fa-instagram"></i>
-        <div class="link-text">
-            <h3>Instagram</h3>
-            <p>盤勢觀測碎碎念與最真實的交易員生活寫照。</p>
-        </div>
-    </a>
-    <a href="https://line.me/ti/g2/Lv_B81WTBTybsBLfqIOHNiHfeG7pvDtXMymerw" class="link-card">
-        <i class="fab fa-line"></i>
-        <div class="link-text">
-            <h3>LINE 實戰交流群</h3>
-            <p>拒絕盲目操作，與專業交易夥伴一同建立市場生存心法。</p>
-        </div>
-    </a>
-    <a href="https://portaly.cc/552888" class="link-card">
-        <i class="fas fa-layer-group"></i>
-        <div class="link-text">
-            <h3>Portaly 官方整合頁</h3>
-            <p>一站式存取所有韓信官方資源，確保訊息不漏接。</p>
-        </div>
-    </a>
-
-    <div class="bitget-premium">
-        <div class="bitget-logo">Bit<span>get</span> 官方合作計畫</div>
-        <p class="premium-desc">
-            全球領先的加密貨幣交易平台。<br>
-            透過韓信專屬連結註冊，獲取<b>實戰預測教學</b>資源與永久手續費折扣。
-        </p>
-        <div class="code-wrap">
-            <span class="code-label">韓信專屬邀請碼</span>
-            <div class="code-val">nsqv</div>
-        </div>
-        <a href="https://partner.bitget.fit/bg/XA5BUS" class="btn-reg">立即開戶註冊領取優惠</a>
-    </div>
-
-    <footer class="footer">
-        ⚠️ 交易風險提示：加密貨幣具有高度波動性。<br>
-        本站內容不構成投資建議，入市需有風控意識。<br>
-        © 2026 Han Crypto | han_crypto25
-    </footer>
-</div>
-
-<script>
-    const frame = document.getElementById('chart-frame');
-    let lastClose = 110;
-
-    function createCandle(isResult) {
-        const bodySize = (Math.random() - 0.5) * 50; 
-        const open = lastClose;
-        const close = open + bodySize;
-        const isUp = close > open;
-        const highWick = Math.random() * 20;
-        const lowWick = Math.random() * 20;
-
-        const candle = document.createElement('div');
-        candle.className = 'candle';
-        candle.style.color = isUp ? 'var(--up)' : 'var(--down)';
-        
-        const bodyH = Math.abs(open - close) + 4; 
-        const bodyTop = 180 - Math.max(open, close); 
-        const wickH = bodyH + highWick + lowWick;
-        const wickTop = bodyTop - highWick;
-
-        candle.innerHTML = `
-            <div class="wick" style="height:${wickH}px; top:${wickTop}px;"></div>
-            <div class="body" style="height:${bodyH}px; top:${bodyTop}px; background:currentColor;"></div>
-        `;
-        
-        frame.appendChild(candle);
-        lastClose = close;
-        return isUp;
-    }
-
-    function initChart() {
-        frame.innerHTML = '';
-        lastClose = 90 + Math.random() * 40; 
-        for (let i = 0; i < 15; i++) {
-            createCandle(false);
-        }
-    }
-
-    function play(choice) {
-        const isUp = createCandle(true);
-        const fb = document.getElementById('fb');
-        const bg = document.getElementById('btn-group');
-        bg.style.display = 'none';
-        fb.style.display = 'block';
-        if ((choice === 'up' && isUp) || (choice === 'down' && !isUp)) {
-            fb.innerHTML = `<span style="color:var(--up)">✅ 盤感準確！這波捕獲成功</span>`;
-        } else {
-            fb.innerHTML = `<span style="color:var(--down)">❌ 預判錯誤！市場無情洗盤</span>`;
-        }
-        fb.innerHTML += `<br><button onclick="location.reload()" style="margin-top:15px; background:var(--gold); border:none; color:#000; padding:8px 20px; border-radius:5px; cursor:pointer; font-weight:bold; font-size:14px;">重新挑戰</button>`;
-    }
-
-    // 確保網頁載入後立即執行
-    window.onload = initChart;
-</script>
 
 </body>
 </html>
