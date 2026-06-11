@@ -3,139 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HANLAO RISE | 韓佬 - 紀律與覺醒</title>
+    <title>HANLAO RISE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;500;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
-            background-color: #050505;
-            color: #e0e0e0;
+            background-color: #121315; /* 換成柔和溫暖的深碳灰 */
+            color: #D1D5DB;
             font-family: 'Noto Sans TC', sans-serif;
         }
         .bebas { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
         
-        /* 極簡乾淨的橫條卡片 */
-        .simple-list-btn {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        .simple-list-btn:hover {
-            border-color: #8B0000;
-            background: rgba(139, 0, 0, 0.05);
-            transform: translateX(4px);
-        }
-        /* 獨家平台特別標註 */
-        .featured-btn {
-            border-left: 4px solid #8B0000;
+        /* 柔和、低調的卡片設計 */
+        .simple-link {
             background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .simple-link:hover {
+            border-color: #9CA3AF; /* 溫和的銀灰色邊框 */
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-2px);
+        }
+        /* 獨家平台特別標註（低彩度舒服紅） */
+        .featured-link {
+            border-left: 3px solid #A84343; 
+            background: rgba(168, 67, 67, 0.05);
         }
     </style>
 </head>
-<body class="antialiased flex flex-col items-center min-h-screen justify-center py-16 px-4">
+<body class="antialiased flex flex-col items-center min-h-screen justify-center py-16 px-6">
 
-    <div class="w-full max-w-xl">
+    <div class="w-full max-w-md space-y-10">
         
-        <!-- Header: 經典大標與小白秒懂的信條 -->
-        <header class="text-center mb-12">
-            <h1 class="text-6xl bebas text-white mb-2 tracking-tighter">HANLAO RISE</h1>
-            <p class="text-gray-500 tracking-[0.3em] uppercase text-[10px] bebas mb-6">Discipline Creates Freedom</p>
-            <p class="text-xl font-bold text-gray-200">「市場不相信眼淚，只獎勵紀律的人。」</p>
-            <p class="text-xs text-gray-500 mt-2">穩定大於暴利 | 情緒是交易最大的敵人</p>
+        <!-- Header: 溫和舒服的視覺開頭 -->
+        <header class="text-center space-y-4">
+            <h1 class="text-5xl bebas text-gray-100 tracking-wider">HANLAO RISE</h1>
+            <div class="space-y-1">
+                <p class="text-lg font-medium text-gray-300">「市場只獎勵紀律的人。」</p>
+                <p class="text-xs text-gray-500">穩定大於暴利 ｜ 活下來比什麼都重要</p>
+            </div>
         </header>
 
-        <!-- 數據戰績：最直覺的信任基石 -->
-        <section class="grid grid-cols-2 gap-2 mb-8">
-            <div class="bg-white/[0.01] border border-gray-900 py-4 text-center rounded">
-                <p class="text-[10px] text-gray-600 uppercase mb-1">真實勝率</p>
-                <p class="text-2xl bebas text-white tracking-widest">70.59%</p>
+        <!-- 核心數據：極簡乾淨 -->
+        <section class="grid grid-cols-2 gap-3 text-center">
+            <div class="bg-white/[0.01] border border-gray-800/60 py-3 rounded-lg">
+                <p class="text-[10px] text-gray-500 mb-0.5">真實勝率</p>
+                <p class="text-xl font-bold text-gray-200">70.59%</p>
             </div>
-            <div class="bg-white/[0.01] border border-gray-900 py-4 text-center rounded">
-                <p class="text-[10px] text-gray-600 uppercase mb-1">核心社群</p>
-                <p class="text-2xl bebas text-white tracking-widest">1000X VIP</p>
+            <div class="bg-white/[0.01] border border-gray-800/60 py-3 rounded-lg">
+                <p class="text-[10px] text-gray-500 mb-0.5">核心社群</p>
+                <p class="text-xl font-bold text-gray-200">1000X VIP</p>
             </div>
         </section>
 
         <!-- 唯一指定交易平台 -->
-        <section class="mb-8">
-            <p class="text-xs text-gray-600 mb-3 tracking-wider font-medium">RECOMMENDED EXCHANGE / 實戰平台</p>
-            <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="simple-list-btn featured-btn p-5 flex justify-between items-center rounded-r group">
-                <div class="flex items-center gap-4">
-                    <i class="fa-solid fa-chart-line text-red-700 text-lg"></i>
-                    <div>
-                        <p class="text-white font-bold text-base">Bitunix 交易所</p>
-                        <p class="text-xs text-gray-500">唯一指定實戰工具（註冊免手續費優惠）</p>
-                    </div>
+        <section class="space-y-2">
+            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">RECOMMENDED / 實戰平台</p>
+            <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="simple-link featured-link p-4 flex justify-between items-center rounded-r-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-chart-line text-red-400/80 text-base"></i>
+                    <span class="text-gray-200 font-medium text-sm">Bitunix 交易所</span>
                 </div>
-                <span class="text-xs text-gray-500 font-mono group-hover:text-white">碼：oz4u</span>
+                <span class="text-xs text-gray-500 font-mono">邀請碼 oz4u</span>
             </a>
         </section>
 
-        <!-- 社交媒體入口：乾淨清單 -->
-        <section class="space-y-3">
-            <p class="text-xs text-gray-600 tracking-wider font-medium">OFFICIAL COMMUNITIES / 官方入口</p>
+        <!-- 官方社群傳送門 -->
+        <section class="space-y-2.5">
+            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">CHANNELS / 官方入口</p>
             
-            <a href="https://t.me/+EYYN0iT19qs2OTRl" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-blue-400 transition-colors"><i class="fa-brands fa-telegram text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">Telegram 核心頻道</p>
-                    <p class="text-[11px] text-gray-500">最即時的真實交易紀錄與行情</p>
+            <a href="https://t.me/+EYYN0iT19qs2OTRl" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-telegram text-gray-400 group-hover:text-blue-400 transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">Telegram 核心頻道</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://reurl.cc/7EWp15" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-green-500 transition-colors"><i class="fa-solid fa-comments text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">LINE 交流社群</p>
-                    <p class="text-[11px] text-gray-500">加密貨幣新手友善討論區</p>
+            <a href="https://reurl.cc/7EWp15" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-comments text-gray-400 group-hover:text-green-400 transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">LINE 交流社群</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://www.instagram.com/hanlao.rise" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-pink-500 transition-colors"><i class="fa-brands fa-instagram text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">Instagram</p>
-                    <p class="text-[11px] text-gray-500">日常紀律生活與個人品牌形象</p>
+            <a href="https://www.instagram.com/hanlao.rise" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-instagram text-gray-400 group-hover:text-pink-400 transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">Instagram</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://www.threads.net/@hanlao.rise" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-white transition-colors"><i class="fa-brands fa-threads text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">Threads 交易語錄</p>
-                    <p class="text-[11px] text-gray-500">每天一兩句話，幫你壓制交易情緒</p>
+            <a href="https://www.threads.net/@hanlao.rise" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-threads text-gray-400 group-hover:text-white transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">Threads 交易語錄</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://youtube.com/@hanlao_rise" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-red-600 transition-colors"><i class="fa-brands fa-youtube text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">YouTube 實戰實錄</p>
-                    <p class="text-[11px] text-gray-500">深度技術分析與實戰心態拆解</p>
+            <a href="https://youtube.com/@hanlao_rise" target="_blank" class="simple-list-btn simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-youtube text-gray-400 group-hover:text-red-500 transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">YouTube 實戰影片</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://x.com/hanlaorise26" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-white transition-colors"><i class="fa-brands fa-x-twitter text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">X (Twitter)</p>
-                    <p class="text-[11px] text-gray-500">同步全球最新 Web3 核心資訊</p>
+            <a href="https://x.com/hanlaorise26" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-x-twitter text-gray-400 group-hover:text-white transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">X (Twitter)</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://www.tiktok.com/@hanlao.rise" target="_blank" class="simple-list-btn p-4 flex items-center rounded group">
-                <div class="w-8 text-center text-gray-500 group-hover:text-cyan-400 transition-colors"><i class="fa-brands fa-tiktok text-lg"></i></div>
-                <div class="ml-3">
-                    <p class="text-white text-sm font-medium">TikTok 短影音</p>
-                    <p class="text-[11px] text-gray-500">一分鐘交易心法與精華教學</p>
+            <a href="https://www.tiktok.com/@hanlao.rise" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-brands fa-tiktok text-gray-400 group-hover:text-cyan-400 transition-colors text-base"></i>
+                    <span class="text-gray-200 text-sm">TikTok 短影音</span>
                 </div>
+                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
         </section>
 
         <!-- Footer -->
-        <footer class="text-center pt-12 text-gray-700 text-[10px] tracking-widest uppercase">
-            © 2026 HANLAO RISE. 活下來，比什麼都重要。
+        <footer class="text-center text-gray-600 text-[10px] tracking-wider pt-4">
+            © 2026 HANLAO RISE. ALL RIGHTS RESERVED.
         </footer>
 
     </div>
