@@ -9,36 +9,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
-            background-color: #121315; /* 換成柔和溫暖的深碳灰 */
+            background-color: #121315; /* 柔和深碳灰 */
             color: #D1D5DB;
             font-family: 'Noto Sans TC', sans-serif;
         }
         .bebas { font-family: 'Bebas Neue', cursive; letter-spacing: 2px; }
         
-        /* 柔和、低調的卡片設計 */
+        /* 低調質感的連結卡片 */
         .simple-link {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.06);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .simple-link:hover {
-            border-color: #9CA3AF; /* 溫和的銀灰色邊框 */
+            border-color: #9CA3AF;
             background: rgba(255, 255, 255, 0.06);
             transform: translateY(-2px);
         }
-        /* 獨家平台特別標註（低彩度舒服紅） */
-        .featured-link {
-            border-left: 3px solid #A84343; 
-            background: rgba(168, 67, 67, 0.05);
+
+        /* 主要管道：Telegram 專屬突出卡片 */
+        .primary-link {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        .primary-link:hover {
+            border-color: #60A5FA;
+            background: rgba(59, 130, 246, 0.15);
+            transform: translateY(-2px);
+        }
+
+        /* 交易所微調卡片 */
+        .exchange-link {
+            border-left: 3px solid #A84343; /* 柔和沉穩紅 */
+            background: rgba(255, 255, 255, 0.02);
         }
     </style>
 </head>
 <body class="antialiased flex flex-col items-center min-h-screen justify-center py-16 px-6">
 
-    <div class="w-full max-w-md space-y-10">
+    <div class="w-full max-w-md space-y-9">
         
-        <!-- Header: 溫和舒服的視覺開頭 -->
-        <header class="text-center space-y-4">
+        <!-- Header -->
+        <header class="text-center space-y-3">
             <h1 class="text-5xl bebas text-gray-100 tracking-wider">HANLAO RISE</h1>
             <div class="space-y-1">
                 <p class="text-lg font-medium text-gray-300">「市場只獎勵紀律的人。」</p>
@@ -46,7 +59,7 @@
             </div>
         </header>
 
-        <!-- 核心數據：極簡乾淨 -->
+        <!-- 核心數據 -->
         <section class="grid grid-cols-2 gap-3 text-center">
             <div class="bg-white/[0.01] border border-gray-800/60 py-3 rounded-lg">
                 <p class="text-[10px] text-gray-500 mb-0.5">真實勝率</p>
@@ -58,29 +71,69 @@
             </div>
         </section>
 
-        <!-- 唯一指定交易平台 -->
+        <!-- 主要管道：Telegram 特別標示 -->
         <section class="space-y-2">
-            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">RECOMMENDED / 實戰平台</p>
-            <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="simple-link featured-link p-4 flex justify-between items-center rounded-r-lg group">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-chart-line text-red-400/80 text-base"></i>
-                    <span class="text-gray-200 font-medium text-sm">Bitunix 交易所</span>
+            <p class="text-[11px] text-blue-400/80 tracking-wider font-semibold px-1 flex items-center gap-1.5">
+                <i class="fa-solid fa-star text-[10px]"></i> PRIMARY CHANNEL / 主要交流管道
+            </p>
+            <a href="https://t.me/+EYYN0iT19qs2OTRl" target="_blank" class="primary-link p-4 flex justify-between items-center rounded-xl group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <i class="fa-brands fa-telegram text-blue-400 text-lg"></i>
+                    </div>
+                    <div>
+                        <p class="text-gray-100 font-bold text-sm">Telegram 核心頻道</p>
+                        <p class="text-[11px] text-gray-400">即時行情拆解與真實交易紀錄</p>
+                    </div>
                 </div>
-                <span class="text-xs text-gray-500 font-mono">邀請碼 oz4u</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs text-blue-400/60 group-hover:text-blue-300 transition-colors"></i>
             </a>
         </section>
 
-        <!-- 官方社群傳送門 -->
+        <!-- 指定實戰交易所平台 -->
         <section class="space-y-2.5">
-            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">CHANNELS / 官方入口</p>
+            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">EXCHANGES / 合作交易平台</p>
             
-            <a href="https://t.me/+EYYN0iT19qs2OTRl" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
+            <!-- 1. Toobit (第一位) -->
+            <a href="https://www.toobit.pro/t/HanLao" target="_blank" class="simple-link exchange-link p-4 flex justify-between items-center rounded-r-lg group">
                 <div class="flex items-center gap-3">
-                    <i class="fa-brands fa-telegram text-gray-400 group-hover:text-blue-400 transition-colors text-base"></i>
-                    <span class="text-gray-200 text-sm">Telegram 核心頻道</span>
+                    <i class="fa-solid fa-chart-line text-red-400/80 text-sm"></i>
+                    <span class="text-gray-200 font-medium text-sm">Toobit 交易所</span>
                 </div>
-                <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
+                <span class="text-xs text-gray-400 font-mono">邀請碼 HanLao</span>
             </a>
+
+            <!-- 2. Bybit (第二位) -->
+            <a href="https://partner.bybit.com/b/HANLAO26" target="_blank" class="simple-link exchange-link p-4 flex justify-between items-center rounded-r-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-bolt text-red-400/80 text-sm"></i>
+                    <span class="text-gray-200 font-medium text-sm">Bybit 交易所</span>
+                </div>
+                <span class="text-xs text-gray-400 font-mono">邀請码 HANLAO26</span>
+            </a>
+
+            <!-- 3. OKX (第三位) -->
+            <a href="https://okx.com/join/HANLAO26" target="_blank" class="simple-link exchange-link p-4 flex justify-between items-center rounded-r-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-shield-halved text-red-400/80 text-sm"></i>
+                    <span class="text-gray-200 font-medium text-sm">OKX 交易所</span>
+                </div>
+                <span class="text-xs text-gray-400 font-mono">邀請碼 HANLAO26</span>
+            </a>
+
+            <!-- 4. Bitunix (最後) -->
+            <a href="https://www.bitunix.com/register?vipCode=oz4u" target="_blank" class="simple-link exchange-link p-4 flex justify-between items-center rounded-r-lg group">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-layer-group text-red-400/80 text-sm"></i>
+                    <span class="text-gray-200 font-medium text-sm">Bitunix 交易所</span>
+                </div>
+                <span class="text-xs text-gray-400 font-mono">邀請碼 oz4u</span>
+            </a>
+        </section>
+
+        <!-- 其他社群入口 -->
+        <section class="space-y-2.5">
+            <p class="text-[11px] text-gray-500 tracking-wider font-medium px-1">MEDIA / 官方社群入口</p>
 
             <a href="https://reurl.cc/7EWp15" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
                 <div class="flex items-center gap-3">
@@ -106,7 +159,7 @@
                 <i class="fa-solid fa-angle-right text-xs text-gray-600 group-hover:text-gray-400 transition-colors"></i>
             </a>
 
-            <a href="https://youtube.com/@hanlao_rise" target="_blank" class="simple-list-btn simple-link p-4 flex justify-between items-center rounded-lg group">
+            <a href="https://youtube.com/@hanlao_rise" target="_blank" class="simple-link p-4 flex justify-between items-center rounded-lg group">
                 <div class="flex items-center gap-3">
                     <i class="fa-brands fa-youtube text-gray-400 group-hover:text-red-500 transition-colors text-base"></i>
                     <span class="text-gray-200 text-sm">YouTube 實戰影片</span>
